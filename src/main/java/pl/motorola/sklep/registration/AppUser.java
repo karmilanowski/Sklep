@@ -1,4 +1,4 @@
-package pl.motorola.sklep.model;
+package pl.motorola.sklep.registration;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -28,7 +28,7 @@ public class AppUser implements UserDetails {
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
-    private AppUserRole appUserRole;
+    private AppUserRole role;
     private Boolean locked = false;
     private Boolean enabled = false;
 
@@ -36,17 +36,17 @@ public class AppUser implements UserDetails {
                    String lastName,
                    String email,
                    String password,
-                   AppUserRole appUserRole) {
+                   AppUserRole role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.appUserRole = appUserRole;
+        this.role = role;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(appUserRole.name());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.name());
         return Collections.singleton(authority);
     }
 

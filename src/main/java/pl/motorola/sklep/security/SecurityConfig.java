@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import pl.motorola.sklep.service.AppUserService;
+import pl.motorola.sklep.registration.AppUserService;
 
 @Configuration
 @EnableWebSecurity
@@ -24,8 +24,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/v*/registration/**")
+                .antMatchers("/api/v*/**")
                 .permitAll()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated().and()
                 .formLogin();

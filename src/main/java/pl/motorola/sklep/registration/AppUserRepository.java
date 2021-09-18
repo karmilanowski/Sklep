@@ -1,8 +1,8 @@
-package pl.motorola.sklep.repository;
+package pl.motorola.sklep.registration;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import pl.motorola.sklep.model.AppUser;
+import pl.motorola.sklep.registration.AppUser;
 
 import java.util.Optional;
 

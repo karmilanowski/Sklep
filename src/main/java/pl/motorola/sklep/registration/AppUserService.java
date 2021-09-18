@@ -1,4 +1,4 @@
-package pl.motorola.sklep.service;
+package pl.motorola.sklep.registration;
 
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -6,8 +6,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.motorola.sklep.model.AppUser;
-import pl.motorola.sklep.repository.AppUserRepository;
 
 
 @Service
