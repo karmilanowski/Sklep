@@ -1,4 +1,4 @@
-package pl.motorola.sklep.products.error;
+package pl.motorola.sklep.httpclient.error;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatus.Series;

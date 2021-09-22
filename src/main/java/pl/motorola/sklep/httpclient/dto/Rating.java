@@ -1,4 +1,4 @@
-package pl.motorola.sklep.products.dto;
+package pl.motorola.sklep.httpclient.dto;
 
 import lombok.*;
 

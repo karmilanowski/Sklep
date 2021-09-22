@@ -5,8 +5,8 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
-import pl.motorola.sklep.products.client.ProductHttpClient;
-import pl.motorola.sklep.products.error.RestTemplateResponseErrorHandler;
+import pl.motorola.sklep.httpclient.client.ProductHttpClient;
+import pl.motorola.sklep.httpclient.error.RestTemplateResponseErrorHandler;
 
 import java.time.Duration;
 

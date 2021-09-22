@@ -1,14 +1,11 @@
 package pl.motorola.sklep.model;
 
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -19,19 +16,22 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String description;
-    private Integer quantity;
+    private String title;
     private BigDecimal price;
-    @ManyToOne
+    private String description;
+    @ManyToOne()
     private Category category;
-    private LocalDateTime created;
-    private LocalDateTime updated;
+    private String image;
+    private double rate;
+    private int quantity;
 
-    public Product(String name, String description, Integer quantity, BigDecimal price) {
-        this.name = name;
-        this.description = description;
-        this.quantity = quantity;
+    public Product(String title, BigDecimal price, String description, Category category, String image, double rate, int quantity) {
+        this.title = title;
         this.price = price;
+        this.description = description;
+        this.category = category;
+        this.image = image;
+        this.rate = rate;
+        this.quantity = quantity;
     }
 }

@@ -1,4 +1,4 @@
-package pl.motorola.sklep.products.dto;
+package pl.motorola.sklep.httpclient.dto;
 
 import lombok.*;
 
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ProductsDto {
+public class ProductDto {
     private String title;
     private BigDecimal price;
     private String description;
