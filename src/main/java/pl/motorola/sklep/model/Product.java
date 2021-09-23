@@ -18,8 +18,9 @@ public class Product {
     private Long id;
     private String title;
     private BigDecimal price;
+    @Column(length = 2000)
     private String description;
-    @ManyToOne()
+    @ManyToOne(cascade = {CascadeType.ALL})
     private Category category;
     private String image;
     private double rate;

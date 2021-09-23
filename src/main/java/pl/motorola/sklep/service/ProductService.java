@@ -31,7 +31,7 @@ public class ProductService {
     }
 
     @EventListener(ApplicationReadyEvent.class)
-    void saveProducts(){
+    public void saveProducts(){
         List<ProductDto> products = productHttpClient.getProducts();
         List<Product> productList = productsMapper.toEntity(products);
         productList.forEach(s -> productRepository.save(s));

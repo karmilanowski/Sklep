@@ -19,10 +19,7 @@ public class ProductController {
 
     @GetMapping("/addToCart")
     String addToCart(@RequestParam("productId") long id){
-        Product product = productService.findById(id);
-        cartService.save(new Cart(product));
-        product.setQuantity(product.getQuantity()-1);
-        productService.save(product);
+
         return "redirect:/";
     }
 }

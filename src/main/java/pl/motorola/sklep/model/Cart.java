@@ -14,10 +14,5 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
-    Product product;
 
-    public Cart(Product product) {
-        this.product = product;
-    }
 }
