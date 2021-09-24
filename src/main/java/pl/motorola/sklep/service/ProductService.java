@@ -11,6 +11,7 @@ import pl.motorola.sklep.model.Product;
 import pl.motorola.sklep.repository.ProductRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -22,7 +23,7 @@ public class ProductService {
 
     private final ProductRepository productRepository;
 
-    public Product findById(long id){
+    public Optional<Product> findById(long id){
         return productRepository.findById(id);
     }
 
@@ -34,6 +35,6 @@ public class ProductService {
     public void saveProducts(){
         List<ProductDto> products = productHttpClient.getProducts();
         List<Product> productList = productsMapper.toEntity(products);
-        productList.forEach(s -> productRepository.save(s));
+        productRepository.saveAll(productList);
     }
 }

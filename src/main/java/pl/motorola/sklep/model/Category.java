@@ -1,20 +1,25 @@
 package pl.motorola.sklep.model;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.UniqueElements;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @NoArgsConstructor
+@ToString
+@Getter
+@Setter
 public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "category",cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "category")
     private List<Product> productList;
 
 
