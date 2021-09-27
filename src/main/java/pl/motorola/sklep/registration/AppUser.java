@@ -31,8 +31,6 @@ public class AppUser implements UserDetails {
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
-    @OneToOne
-    private Cart cart;
     private AppUserRole role;
     private Boolean locked = false;
     private Boolean enabled = false;

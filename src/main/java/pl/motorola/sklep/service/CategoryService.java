@@ -13,15 +13,26 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
 
-    List<Category> findAll(){
+    public List<Category> findAll(){
         return categoryRepository.findAll();
     }
 
-    Category findById(long id){
+    public Category findById(long id){
         return categoryRepository.getById(id);
     }
 
-    Category findByName(String name){
+    public Category findByName(String name){
         return categoryRepository.findByName(name);
+    }
+
+    public Category save(Category category){
+        Category searchingCategory = categoryRepository.findByName(category.getName());
+        if(searchingCategory!=null){
+            return null;
+        }
+        else {
+            categoryRepository.save(category);
+            return category;
+        }
     }
 }

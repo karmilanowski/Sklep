@@ -1,5 +1,6 @@
 package pl.motorola.sklep.httpclient;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import pl.motorola.sklep.httpclient.dto.ProductDto;
 import pl.motorola.sklep.model.Category;
@@ -11,8 +12,10 @@ import java.util.List;
 import java.util.Set;
 
 @Component
+@AllArgsConstructor
 public class ProductsMapper implements Mapper<List<Product>, List<ProductDto>>{
 
+    private CategoryValidator categoryValidator;
 
     @Override
     public List<Product> toEntity(List<ProductDto> dto) {
@@ -22,7 +25,7 @@ public class ProductsMapper implements Mapper<List<Product>, List<ProductDto>>{
                     productDto.getTitle(),
                     productDto.getPrice(),
                     productDto.getDescription(),
-                    new Category(productDto.getCategory()),
+                    categoryValidator.validate(productDto),
                     productDto.getImage(),
                     productDto.getRating().getRate(),
                     productDto.getRating().getCount()));

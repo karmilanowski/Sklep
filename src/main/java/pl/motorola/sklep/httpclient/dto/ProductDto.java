@@ -1,6 +1,7 @@
 package pl.motorola.sklep.httpclient.dto;
 
 import lombok.*;
+import pl.motorola.sklep.model.Category;
 
 import java.math.BigDecimal;
 

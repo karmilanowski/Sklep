@@ -1,23 +1,24 @@
 package pl.motorola.sklep.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.motorola.sklep.registration.AppUser;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-public class Cart {
+public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToMany
-    private List<CartItem> cartItmes;
-    @OneToOne
-    private AppUser appUser;
+    private List<Product> productList;
+    private BigDecimal sum;
 }

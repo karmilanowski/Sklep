@@ -20,7 +20,7 @@ public class Product {
     private BigDecimal price;
     @Column(length = 2000)
     private String description;
-    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @ManyToOne()
     private Category category;
     private String image;
     private double rate;

@@ -1,0 +1,1 @@
+Insert into users (email, first_name,last_name, password, role) VALUES ('admin','admin','admin','123',1);

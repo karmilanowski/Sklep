@@ -1,22 +1,23 @@
 package pl.motorola.sklep.httpclient;
 
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
+import pl.motorola.sklep.httpclient.dto.ProductDto;
 import pl.motorola.sklep.model.Category;
-import pl.motorola.sklep.model.Product;
-import pl.motorola.sklep.repository.CategoryRepository;
+import pl.motorola.sklep.service.CategoryService;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+@Component
+@AllArgsConstructor
 public class CategoryValidator {
-    private CategoryRepository categoryRepository;
+    private CategoryService categoryService;
 
-    public Category validate(List<Product> productList){
-        Set<Category> categories = new HashSet<>();
-        for (Product product : productList) {
-            categories.add(product.getCategory());
+    public Category validate(ProductDto product){
+        Category category = categoryService.findByName(product.getCategory());
+        if(category!=null){
+            return category;
         }
-
+        Category newCategory = new Category(product.getCategory());
+        categoryService.save(newCategory);
+        return newCategory;
     }
 }
