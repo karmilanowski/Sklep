@@ -6,10 +6,13 @@ import pl.motorola.sklep.model.Category;
 import pl.motorola.sklep.model.Product;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Component
 public class ProductsMapper implements Mapper<List<Product>, List<ProductDto>>{
+
 
     @Override
     public List<Product> toEntity(List<ProductDto> dto) {

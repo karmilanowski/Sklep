@@ -3,8 +3,8 @@ package pl.motorola.sklep.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -14,6 +14,6 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
-    private CartItem cartItem;
+    @OneToMany
+    private List<Product> productList;
 }

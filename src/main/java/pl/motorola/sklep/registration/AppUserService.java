@@ -1,6 +1,10 @@
 package pl.motorola.sklep.registration;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -38,4 +42,12 @@ public class AppUserService implements UserDetailsService {
         appUser.setPassword(encodedPassword);
         repository.save(appUser);
     }
+
+    public AppUser getLoggedUser(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        AppUser loggedUser = (AppUser) authentication.getPrincipal();
+        return loggedUser;
+    }
+
+
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -12,7 +13,7 @@ public class RegistrationService {
     private final AppUserService appUserService;
     private AppUserRepository appUserRepository;
 
-    public void register(RegistrationRequest request) {
+    public void register(AppUserDto request) {
         appUserService.signUpUser(
                 new AppUser(
                         request.getFirstName(),
@@ -28,6 +29,11 @@ public class RegistrationService {
     public List<AppUser> findAll(){
         return appUserRepository.findAll();
     }
+
+    public Optional<AppUser> findByEmail(String email){
+        return appUserRepository.findByEmail(email);
+    }
+
 
 
 }

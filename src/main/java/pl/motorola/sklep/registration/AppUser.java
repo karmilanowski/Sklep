@@ -7,8 +7,10 @@ import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import pl.motorola.sklep.model.Cart;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -25,9 +27,12 @@ public class AppUser implements UserDetails {
     private Long id;
     private String firstName;
     private String lastName;
+
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
+    @OneToOne
+    private Cart cart;
     private AppUserRole role;
     private Boolean locked = false;
     private Boolean enabled = false;
@@ -86,6 +91,10 @@ public class AppUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return !enabled;
+    }
+
+    public String getLoggedUser(){
+        return this.email;
     }
 
 

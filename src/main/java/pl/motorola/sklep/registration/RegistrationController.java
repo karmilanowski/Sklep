@@ -1,9 +1,12 @@
 package pl.motorola.sklep.registration;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/registration")
@@ -13,8 +16,14 @@ public class RegistrationController {
     private final RegistrationService registrationService;
 
     @PostMapping()
-    public void addUser(@RequestBody RegistrationRequest request){
-        registrationService.register(request);
+    public ResponseEntity<Void> addUser(@RequestBody AppUserDto user){
+        Optional<AppUser> exists = registrationService.findByEmail(user.getEmail());
+        if(exists.isEmpty()){
+            registrationService.register(user);
+            return new ResponseEntity<Void>(HttpStatus.CREATED);
+
+        }
+        return new ResponseEntity<Void>(HttpStatus.CONFLICT);
     }
 
     @GetMapping()
